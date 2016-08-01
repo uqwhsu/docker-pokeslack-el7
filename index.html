@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="docker-pokeslack-el7 : PokéSlack CentOS 7 Docker image">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>docker-pokeslack-el7</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/uqwhsu/docker-pokeslack-el7">View on GitHub</a>
+
+          <h1 id="project_title">docker-pokeslack-el7</h1>
+          <h2 id="project_tagline">PokéSlack CentOS 7 Docker image</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/uqwhsu/docker-pokeslack-el7/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/uqwhsu/docker-pokeslack-el7/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="https://uqwhsu.github.io/">Home</a> -&gt; <a href="https://github.com/uqwhsu/docker-pokeslack-el7">PokéSlack CentOS 7 Docker image</a></p>
+
+<h1>
+<a id="pokeslack-centos-7-docker-image" class="anchor" href="#pokeslack-centos-7-docker-image" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PokeSlack CentOS 7 Docker image</h1>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>This is used to run a local <a href="https://github.com/timwah/pokeslack">timwah/pokeslack</a> notification bot because it can no longer be run on Heroku.  See <a href="https://github.com/timwah/pokeslack/issues/28">Unexpected HTTP server response - needs 200 got 403</a> .  Additional included features:</p>
+
+<ul>
+<li>
+<strong>centos:7</strong> base image</li>
+<li>timezone environment setting</li>
+<li>auto restart bot after 15 minutes</li>
+</ul>
+
+<p>References:</p>
+
+<ul>
+<li><a href="https://www.reddit.com/r/pokemongodev/comments/4ul2r1/pokeslack_slackbot_notifications_about_pokemon/">PokeSlack - Slackbot notifications about Pokemon near you</a></li>
+</ul>
+
+<h2>
+<a id="usage-notes" class="anchor" href="#usage-notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage notes</h2>
+
+<p>Edit the <code>.env</code> configuration file, then update the systemd <code>docker-pokeslack.service</code> script to mount the configuration file as volume as well as define the timezone settting, or run it all from command line.</p>
+
+<h2>
+<a id="variables" class="anchor" href="#variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Variables</h2>
+
+<ul>
+<li>
+<strong>LOCALTIMEZONE</strong> : Time zone name used in value of TZ environment variable (Default: UTC)</li>
+</ul>
+
+<h2>
+<a id="volumes" class="anchor" href="#volumes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Volumes</h2>
+
+<ul>
+<li>/opt</li>
+</ul>
+
+<h2>
+<a id="complete-example" class="anchor" href="#complete-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Complete Example</h2>
+
+<div class="highlight highlight-source-shell"><pre>docker build -t uqwhsu/pokeslack --rm=<span class="pl-c1">true</span> --force-rm=<span class="pl-c1">true</span> <span class="pl-c1">.</span>
+
+docker run -h pokeslack \
+  -e LOCALTIMEZONE=Australia/Brisbane \
+  -v <span class="pl-k">~</span>/dev/docker/pokeslack/data/opt/.env:/opt/.env \
+  uqwhsu/pokeslack</pre></div>
+
+<p>Check your #pokealert Slack channel after starting the container.</p>
+
+<hr>
+
+<h2>
+<a id="additional-information" class="anchor" href="#additional-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional Information</h2>
+
+<p>Please see: <a href="https://github.com/timwah/pokeslack/blob/master/README.md">PokeSlack README</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">docker-pokeslack-el7 maintained by <a href="https://github.com/uqwhsu">uqwhsu</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
