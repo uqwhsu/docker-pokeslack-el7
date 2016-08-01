@@ -15,7 +15,7 @@ yum clean all
 # clone PokeSlack and install dependencies
 RUN cd /opt && \
 git clone https://github.com/timwah/pokeslack.git . && \
-pip install -r requirements.txt
+pip --disable-pip-version-check --no-cache-dir install -r requirements.txt
 
 # copy setting file
 COPY .env /opt
