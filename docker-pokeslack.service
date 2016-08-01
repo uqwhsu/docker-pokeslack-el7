@@ -1,0 +1,15 @@
+[Unit]
+Description=Slack notification container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill pokeslack
+ExecStartPre=-/usr/bin/docker rm pokeslack
+ExecStart=/usr/bin/docker run -h pokeslack --name pokeslack uqwhsu/pokeslack
+ExecStop=/usr/bin/docker stop pokeslack
+
+[Install]
+WantedBy=multi-user.target
+
